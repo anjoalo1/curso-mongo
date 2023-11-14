@@ -1,0 +1,73 @@
+<div>
+    <details>
+        <summary class="summary-left">
+            <a>Contenido Del Curso</a>
+        </summary>
+        <ul class="ul-summary">
+            <li><a href="/">¿Qué es Mongodb?</a></li>
+            <li><a href="/mongo/basico">Basico</a></li>
+          
+        </ul>
+    </details>
+</div>
+
+
+<style>
+    details{
+    background: rgb(63, 58, 58);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    margin-bottom: 20px;
+}
+
+
+details[open] summary ~ *{
+    animation: load 0.8s ease-in-out;
+}
+
+
+@keyframes load {
+    from{opacity: 0; margin-left: -10px}
+    to{opacity: 1; margin-left: 0px}
+}
+
+.summary-left{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(166, 76, 15);
+    list-style-type: none;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 1rem;
+    background: #02020233; 
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.ul-summary{
+    padding: 0 10px 20px;
+}
+
+
+details ul li{
+    list-style-type: none;
+    /* margin: 10px; */
+    font-size: 2rem;
+    /* border-top: 1px solid grey; */
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    padding: 20px 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 8px;  
+
+}
+
+  details ul li:hover{
+    background-color: rgb(29, 23, 19);
+  }
+</style>

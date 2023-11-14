@@ -1,0 +1,265 @@
+--- 
+import Navigation from '../components/Navigation.astro';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<script src="../scripts/myscript.js"></script>
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header id="header">
+			<ul class="ul-header">
+				<li>
+					<div class="li-inicio" id="li-inicio">Inicio</div>
+					<div class="li1" id="li1">
+						<div><a>hola</a></div>
+						<div><a>hola2</a></div>					
+					</div>
+				</li>
+				<li>About</li>
+				<li>Dibujos</li>
+				<li>Ejemplos</li>
+				<li>Dinner</li>
+				<li>Ejemplos</li>
+				<li>Dinner</li>
+			</ul>
+		</header>
+
+		<div class="main-container">
+
+				<div class="aside">
+					<slot name="aside"></slot>
+				</div>
+
+				<div class="main">
+					<Navigation></Navigation>
+					<slot name="main"></slot>
+				</div>
+				
+
+			
+			
+
+			<footer class="footer">
+				<div>
+					<p>este es el footer lo</p>
+				</div>
+			</footer>
+		</div>
+
+		<script is:inline>
+			/* const miLi = document.getElementById('li-inicio');
+			const li1 = document.getElementById('li1');
+			const ancho = document.body.clientWidth;
+			if(ancho >=800){
+				console.log("El valor actual supera los 800 px", ancho)
+			}else{
+				console.log("Valor en parametros normales", ancho);
+			} */
+			
+			/* console.log(ancho);
+			console.log(ancho.body);
+			console.log(ancho.body.clientWidth); */
+
+
+			const header = document.getElementById('header');
+			const alturaheader = header.clientHeight;
+			console.log(alturaheader);
+
+		/* 	miLi.addEventListener('click', ()=>{
+				if(li1.classList=="li1"){
+
+					li1.classList.replace('li1', 'li1-visible');
+				}else{
+					li1.classList.replace('li1-visible', 'li1');
+				}
+			}) */
+			
+		</script>
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: #20252C;
+		/* background-size: 224px; */
+	}
+
+	body{
+		margin: 0;
+		box-sizing: border-box;
+		color: white;
+	}
+
+	.parrafo{
+		font-size: 1.4rem;
+	}
+
+	strong{
+		color: red;
+	}
+
+	.main-container{
+		width: auto;
+		margin: 0 auto;
+		border: 1px solid white;
+		display: grid;
+		grid-template-columns: 250px auto;
+		gap: 10px;
+		/* justify-content: start; */
+	}
+
+	header{
+		width: auto;
+		z-index: 9999;
+		color: black;
+		padding: 10px 20px;
+		position: sticky;
+		/* height: 100px; */
+		border: 1px solid white;
+		top: 0;
+		background-color: azure;
+		
+	}
+
+	.li1{
+		display: none;
+	}
+
+	.li1-visible{
+		display: block;
+		position: absolute;
+		display: block;
+		background-color: chocolate;
+		z-index: 999;
+		padding: 30px;
+	}
+
+	.ul-header{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		list-style: none;
+	}
+
+	.aside{
+		grid-column: 1/2;padding: 10px;
+		position: sticky;
+		top: 73px;
+		width: 250px;
+		overflow: auto;
+		background-color: #20252C;
+		height: calc(100vh - 70px);
+	}
+	.main{
+		grid-column: 2/3;padding: 10px;
+		width:calc(80vw - 200px);
+		margin: 0 auto;
+		padding: 50px 20px;
+		background-color: transparent;
+	}
+
+	.footer{
+		grid-column: 2/3;
+		width: 60vw;
+		margin: 0 auto;
+	}
+
+	.footer>div{
+		padding: 20px;
+	}
+
+	@media screen and (max-width: 700px){
+
+		.main-container{
+		width: auto;
+		display: grid;
+		grid-template-columns: 95vw;
+		}
+
+		header{
+			position: relative;
+				width: auto;
+				height: auto;		
+		}
+
+		.ul-header{
+			flex-direction: column;
+		}
+
+		.aside{
+			display: none;
+			grid-column: 1/2;
+			padding: 10px;
+		}
+		.main{
+			width: 80vw;
+			grid-column: 1/2;
+			margin: 0 auto;
+		}
+
+		.footer{
+			width: 80vw;
+			grid-column: 1/2;
+			margin: 0 auto;
+		}
+
+	}
+
+	.res{
+		color: red;
+		font-weight: bold;
+		
+	}
+
+	.title-h1{
+		color: red;
+		text-align: center;
+		font-size: 2rem;
+		font-weight: bold;
+	}
+	.title-h2{
+		color: red;
+		text-align: left;
+		font-size: 1.8rem
+		font-weight: bold;
+	}
+	.title-h3{
+		color: red;
+		text-align: left;
+		font-size: 1.5rem
+		font-weight: bold;
+	}
+
+
+
+
+
+
+
+	
+	code {
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+			Bitstream Vera Sans Mono, Courier New, monospace;
+	}
+</style>

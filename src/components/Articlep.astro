@@ -1,0 +1,25 @@
+---
+/* interface Props {
+	article4;
+    titleArticle:string;
+}
+const { article4, titleArticle } = Astro.props; */
+---
+
+<article class="article-comp">
+    <slot />
+   
+</article>
+
+<style>
+
+    .article-comp{
+        /* box-shadow: 5px 5px 40px rgb(0, 0, 0, 0.8); */
+        /* background-color: rgb(70, 92, 92); */
+        padding: 15px 30px;
+        margin-bottom: 15px;
+        border: 1px solid rgb(245, 151, 1);
+        border-radius: 5px;
+    }
+
+</style>

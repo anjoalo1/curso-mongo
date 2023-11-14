@@ -1,0 +1,21 @@
+{
+  "name": "probando_script",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^3.0.7",
+    "prism-themes": "^1.9.0",
+    "prismjs": "^1.29.0",
+    "prismjs-okaidia-theme": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/prismjs": "^1.26.0"
+  }
+}

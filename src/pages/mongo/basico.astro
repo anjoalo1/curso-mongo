@@ -1,0 +1,187 @@
+---
+import Layout from './../../layouts/Layout.astro';
+import Articlep from './../../components/Articlep.astro';
+import Code from './../../components/Code.astro';
+import Code2 from '../../components/Code2.astro';
+const typelang ="line-numbers language-javascript";
+
+const codigos = {
+    codigo1:`show dbs`,
+    codigo2:`db
+`,
+    codigo3:`use mi_base_de_datos
+`,
+    codigo4:`showCollections
+`,
+    codigo5:`db.usuarios.insertOne({
+    nombre: "Juan Pérez",
+    edad: 30,
+    correo: "juan@example.com"
+});
+`,
+    codigo6:`db.usuarios.insertMany([
+    {
+        nombre: "María García",
+        edad: 25,
+        correo: "maria@example.com"
+    },
+    {
+        nombre: "Pedro López",
+        edad: 35,
+        correo: "pedro@example.com"
+    }
+]);
+`,
+    codigo7:`db.miColeccion.find()`,
+    codigo8:`db.usuarios.findOne({ nombre: "Ejemplo" })`,
+    codigo9:`
+    //updateOne
+    db.coleccion.updateOne(
+  { filtro },
+  { $set: { campo: nuevoValor } }
+)
+//updateMany
+db.coleccion.updateOne(
+  { filtro },
+  { $set: { campo: nuevoValor } }
+)
+`,
+    codigo10:`
+    db.usuarios.updateOne(
+    { _id: "12345" },
+    { $set: { direccion: "Nueva Dirección" } }
+);
+
+`,
+    codigo11:`
+    db.usuarios.updateMany(
+    { codigo_postal: "10001" },
+    { $set: { direccion: "Nueva Dirección" } }
+);
+
+`,
+    codigo12:`db.usuarios.deleteOne({ _id: "12345" });
+`,
+    codigo13:`db.usuarios.deleteMany({ edad: { $lt: 18 } });
+`,
+    codigo14:`db.usuarios.find({}, { nombre: 1, _id: 0 })
+`,
+    codigo15:`db.usuarios.find({}, { correo: 0 })
+`,
+    codigo16:`db.usuarios.find({}, { nombre: 1, edad: 1, _id: 0 })
+`,
+    codigo17:``,
+    codigo18:``,
+    codigo19:``,
+    codigo20:``,
+    codigo21:``,
+    codigo22:``,
+}
+---
+
+<Layout title='basico'>
+    <main slot="main">
+        <Articlep>
+            <h2 class="title-h2">Comandos básicos de MongoDB</h2>
+            <h2 class="title-h2">Listar Bases de Datos</h2>
+            <p class="parrafo">Para listar las bases de datos existentes, utiliza el comando show dbs en el shell de MongoDB</p>
+            <Code codigo={codigos.codigo1} typeLan={typelang}></Code>
+            <h2 class="title-h2">Ver BD Actual</h2>
+            <p class="parrafo">Para ver la base de datos que se está utilizando actualmente en MongoDB, puedes utilizar el comando db en la consola de MongoDB. Simplemente escribe db y presiona Enter, y MongoDB te mostrará la base de datos actualmente seleccionada. Aquí tienes un ejemplo:</p>
+            <Code codigo={codigos.codigo2} typeLan={typelang}></Code>
+            <h2 class="title-h2">Seleccionar una Base de Datos:</h2>
+            <p class="parrafo">Para seleccionar una base de datos específica (o crearla si no existe), utiliza el comando use nombreDeLaBaseDeDatos:</p>
+            <Code codigo={codigos.codigo3} typeLan={typelang}></Code>
+            <h2 class="title-h2">Mostrar Colecciones en una Base de Datos:</h2>
+            <p class="parrafo">Para mostrar las colecciones en la base de datos actual, utiliza el comando show collections:</p>
+            <Code codigo={codigos.codigo4} typeLan={typelang}></Code>
+        </Articlep>
+        <Articlep>
+            <h2 class="title-h2">Operaciones CRUD</h2>
+            <p class="parrafo">Las operaciones CRUD son un conjunto básico de operaciones que se utilizan en sistemas de gestión de bases de datos y aplicaciones para gestionar datos. CRUD es un acrónimo que se refiere a las siguientes cuatro operaciones fundamentales:</p>
+            <ol class="parrafo">
+                <li>Create (Crear): La operación "Create" se utiliza para crear nuevos registros o documentos en una base de datos. En el contexto de una base de datos relacional, esto se traduce en la inserción de nuevos registros en una tabla. En una base de datos NoSQL, como MongoDB, esto implica agregar nuevos documentos a una colección.</li>
+                <li>Read (Leer): La operación "Read" se utiliza para recuperar o leer datos existentes de la base de datos. Esto implica recuperar registros o documentos específicos o, en algunos casos, recuperar todos los datos de una tabla o colección.</li>
+                <li>Update (Actualizar): La operación "Update" se utiliza para modificar o actualizar registros o documentos existentes en la base de datos. Esto implica cambiar los valores de uno o más campos de un registro o documento sin crear uno nuevo.</li>
+                <li>Delete (Eliminar): La operación "Delete" se utiliza para eliminar registros o documentos existentes de la base de datos. Esto implica eliminar permanentemente los datos de la base de datos.</li>
+            </ol>
+            
+            <h2 class="title-h2">CREATE</h2>
+            
+            <p class="parrafo">La operación "Create" en MongoDB se refiere a la inserción de nuevos documentos en una colección. Un documento en MongoDB es un objeto JSON que almacena datos. La operación "Create" se realiza utilizando el método insertOne() para insertar un solo documento o insertMany() para insertar varios documentos en una colección.</p>
+            <h3 class="title-h3">Insertar un solo documento en una colección:</h3>
+            <p class="parrafo">Para insertar un solo documento en una colección, puedes utilizar el método insertOne(). Por ejemplo, supongamos que tienes una colección llamada "usuarios" y deseas agregar un nuevo usuario:</p>
+            <Code codigo={codigos.codigo5} typeLan={typelang}></Code>
+            <p class="parrafo">Este código inserta un nuevo documento en la colección "usuarios" con el nombre, edad y correo del usuario.</p>
+            <h3 class="title-h3">Insertar varios documentos en una colección:</h3>
+            <p class="parrafo">Si deseas insertar varios documentos a la vez, puedes utilizar el método insertMany(). Por ejemplo, para insertar varios usuarios de una vez:</p>
+            <Code codigo={codigos.codigo6} typeLan={typelang}></Code>
+            <p class="parrafo">Este código inserta dos documentos en la colección "usuarios", cada uno representando a un usuario distinto.</p>
+            <h2 class="title-h2">READ</h2>
+            <p class="parrafo">Consultar Documentos: Para leer datos, puedes utilizar el método find. Por ejemplo, para encontrar todos los documentos en una colección:</p>
+            <h3 class="title-h3">db.miColeccion.find()</h3>
+            <Code codigo={codigos.codigo7} typeLan={typelang}></Code>
+            <p class="parrafo">findOne es un método en MongoDB que se utiliza para recuperar un único documento que cumple con un conjunto de criterios de búsqueda de una colección. Es útil cuando deseas encontrar un solo documento que satisfaga tus requisitos de consulta. El documento que se recupera es el primero que coincide con los criterios de búsqueda.</p>
+            <p class="parrafo">Supongamos que tienes una colección llamada "usuarios" y deseas encontrar un usuario con un nombre específico, por ejemplo, "Ejemplo". Puedes usar findOne de la siguiente manera:</p>
+            <Code codigo={codigos.codigo8} typeLan={typelang}></Code>
+            <h2 class="title-h2">UPDATE</h2>
+            
+            <p class="parrafo">Para modificar documentos existentes, utiliza el método updateOne o updateMany. Puedes especificar un filtro para seleccionar los documentos a actualizar y un objeto con las modificaciones a realizar. Por ejemplo:</p>
+
+            <p class="parrafo">Sintaxis de updateOne y updateMany con el operador update en MongoDB:</p>
+            <Code codigo={codigos.codigo9} typeLan={typelang}></Code>
+            
+            <ul class="parrafo">
+                <li>colección: El nombre de la colección en la que deseas realizar la actualización.</li>
+                <li>filtro: Un objeto que especifica qué documentos se deben actualizar. Solo se actualizarán los documentos que coincidan con este filtro.</li>
+                <li>$set: Indica que deseas realizar una operación de establecimiento (set) en los documentos que coinciden con el filtro.</li>
+                <li>campo: El nombre del campo que deseas actualizar.</li>
+                <li>nuevoValor: El nuevo valor que deseas asignar al campo especificado.</li>
+            </ul>
+
+            <p class="parrafo">updateOne y updateMany son métodos en MongoDB que se utilizan para actualizar documentos en una colección. Aquí te proporciono definiciones y ejemplos de cada uno:</p>
+            <h3 class="title-h3">updateOne</h3>
+            <p class="parrafo">updateOne se utiliza para actualizar un solo documento que cumple con los criterios de filtrado especificados en la consulta. Si se encuentran múltiples documentos que coinciden con los criterios, updateOne modificará solo el primero que encuentre.</p>
+            <p class="parrafo">Supongamos que tienes una colección llamada "usuarios" y deseas cambiar la dirección de un usuario específico con _id igual a "12345" a "Nueva Dirección". Puedes hacerlo de la siguiente manera:</p>
+            <p class="parrafo"></p>
+            <Code codigo={codigos.codigo10} typeLan={typelang}></Code>
+            
+            <h3 class="title-h3">updateMany</h3>
+            <p class="parrafo">Se utiliza para actualizar varios documentos que cumplen con los criterios de filtrado especificados en la consulta. Todos los documentos que coincidan con los criterios se modificarán de acuerdo con la actualización especificada.</p>
+            <p class="parrafo">Supongamos que deseas actualizar la dirección de todos los usuarios en la colección "usuarios" que tienen un código postal específico, por ejemplo, "10001". Puedes hacerlo de la siguiente manera:</p>
+            <Code codigo={codigos.codigo11} typeLan={typelang}></Code>
+            
+            <h2 class="title-h2">DELETE</h2>
+            <p class="parrafo">Eliminar documentos en MongoDB se realiza utilizando el método deleteOne() o deleteMany() en función de si deseas eliminar uno o varios documentos que cumplan con ciertos criterios de filtrado. Aquí tienes la definición y ejemplos de ambas operaciones:</p>
+            <h3 class="title-h3">deleteOne</h3>
+            <p class="parrafo">Se utiliza para eliminar un solo documento que cumple con los criterios de filtrado especificados en la consulta. Si se encuentran múltiples documentos que coinciden con los criterios, deleteOne eliminará solo el primero que encuentre.</p>
+            <p class="parrafo">Supongamos que tienes una colección llamada "usuarios" y deseas eliminar un usuario específico con _id igual a "12345". Puedes hacerlo de la siguiente manera:</p>
+            <Code codigo={codigos.codigo12} typeLan={typelang}></Code>
+            <p class="parrafo">Esto eliminará solo el primer documento que cumple con el filtro  _id: "12345" .</p>
+            <h3 class="title-h3">deleteMany</h3>
+            <p class="parrafo">se utiliza para eliminar varios documentos que cumplen con los criterios de filtrado especificados en la consulta. Todos los documentos que coincidan con los criterios se eliminarán.</p>
+            <p class="parrafo">Supongamos que deseas eliminar todos los usuarios en la colección "usuarios" que tengan una edad menor de 18 años. Puedes hacerlo de la siguiente manera:</p>
+            
+            <Code codigo={codigos.codigo13} typeLan={typelang}></Code>
+            <p class="parrafo">Esto eliminará todos los documentos en la colección "usuarios" que tengan una edad menor de 18 años.</p>
+        </Articlep>
+        <Articlep>
+            <h2 class="title-h2">CONSULTAS DETALLADAS</h2>
+            <p class="parrafo">En MongoDB, una consulta se refiere a una operación que se realiza para recuperar datos de una colección que cumplan con ciertos criterios o condiciones específicas. Las consultas son esenciales para la recuperación y filtrado de datos en una base de datos MongoDB.</p>
+            <h3 class="title-h3">Consulta con Proyección de Campos</h3>
+            <p class="parrafo">A ese tipo de consulta en MongoDB, donde se recuperan documentos con campos específicos y se excluyen otros, se le puede llamar "Consulta con Proyección de Campos". Este término describe con precisión el enfoque de la consulta, que es seleccionar y proyectar solo los campos necesarios en el resultado.</p>
+            <p class="parrafo"><strong>Incluir solo el campo "nombre" en el resultado:</strong></p>
+            <p class="parrafo">Supongamos que tienes una colección llamada "usuarios" con documentos que contienen campos como "nombre", "edad" y "correo".</p>
+            <p class="parrafo">Esto recuperará todos los documentos de la colección "usuarios" pero solo incluirá el campo "nombre" en el resultado, mientras que excluye el campo "_id".</p>
+            <Code codigo={codigos.codigo14} typeLan={typelang}></Code>
+            <p class="parrafo"><strong>Excluir el campo "correo" en el resultado:</strong></p>
+            <p class="parrafo">Esto recuperará todos los documentos de la colección "usuarios" pero excluirá el campo "correo" en el resultado.</p>
+            <Code codigo={codigos.codigo15} typeLan={typelang}></Code>
+            <p class="parrafo"><strong>Incluir múltiples campos en el resultado:</strong></p>
+            <p class="parrafo">Esto recuperará todos los documentos de la colección "usuarios" e incluirá los campos "nombre" y "edad" en el resultado, mientras que excluye el campo "_id".</p>
+            <Code codigo={codigos.codigo16} typeLan={typelang}></Code>
+        </Articlep>
+          
+    </main>
+
+</Layout>

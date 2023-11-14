@@ -1,0 +1,72 @@
+<div class="container-header">
+    <header class="header-global">
+        <ul class="ul-header">
+            <li>uno</li>
+            <li>dos</li>
+            <li>tres</li>
+            <li>cuatro</li>
+            <li>cinco</li>
+        </ul>
+    </header>
+</div>
+
+<style>
+
+    .container-header{
+        background-color: #20252C;
+        padding-top: 20px;
+        margin-bottom: 0px;
+    }
+
+    .header-global{
+        color: white;
+      /*   background-color: #20252C;; */
+        min-width: 280px;
+        max-width: 85vw;
+        margin: 10px auto;
+        border-radius: 5px;
+        padding: 5px 10px;
+        
+    }
+
+    .ul-header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style-type: none;
+        padding-left: -40px;
+        
+        
+    }
+
+    ul>li{
+        font-size: 1.2rem;
+        margin: 0 20px;
+        transition: 0.3s;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 600px){
+
+        .header-global{
+            max-width:98vw;
+        }
+
+        .ul-header{
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+
+
+    }
+
+
+    ul>li:hover{
+        background-color: rgb(125, 98, 10);
+    }
+
+</style>

@@ -1,0 +1,219 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Myimagen from '../components/Myimagen.astro';
+import Articlep from '../components/Articlep.astro';
+import Navigation from '../components/Navigation.astro';
+import Code from '../components/Code.astro';
+const typelang ="line-numbers language-javascript";
+
+/* const typelang ="java"; */
+
+const codigo ={
+	codigo1:`use miBasedeDatos`,
+	codigo2:
+	`db.miColeccion.insert({ nombre: "Ejemplo", edad: 30 })
+`,
+codigo3:`
+// Documento 1
+{
+  _id: 1,
+  nombre: "Ejemplo 1",
+  edad: 30,
+  ciudad: "Ciudad A"
+}
+
+// Documento 2
+{
+  _id: 2,
+  nombre: "Ejemplo 2",
+  edad: 25,
+  ciudad: "Ciudad B"
+}
+`,
+codigo4:`{
+  "nombre": "Ejemplo de Valor de Cadena"
+}
+`,
+codigo5:`{
+  "información": {
+    "edad": 30,
+    "ciudad": "Ciudad A"
+  }
+}
+`,
+codigo6:`{
+  "números": [1, 2, 3, 4, 5]
+}
+`,
+codigo7:`{
+  "nombre": "Ejemplo",
+  "edad": 25,
+  "dirección": {
+    "calle": "Calle Principal",
+    "ciudad": "Ciudad B"
+  },
+  "números": [10, 20, 30]
+}
+`,
+codigo8:``,
+}
+---
+
+<Layout title="Welcome to Astro.">
+
+	<div slot="aside">
+		<p>este es el aside</p>
+	</div>
+	
+	<main slot="main">
+
+		<h1>CURSO MongoDB</h1>
+
+
+		<Articlep>
+			<h2 class="title-h2">Qué es una base de datos</h2>
+			<p class="parrafo">una base de datos es una colección organizada y estructurada de datos que se almacena de manera sistemática en una computadora o en un sistema de gestión de bases de datos (DBMS, por sus siglas en inglés). Las bases de datos se utilizan para almacenar, administrar, organizar y recuperar información de manera eficiente.</p>
+			<p class="parrafo">Aquí hay algunas características clave de una base de datos:</p>
+			<ol class="parrafo">
+				<li>Organización: Los datos en una base de datos están organizados de una manera que permite un acceso rápido y eficiente. Esto a menudo implica la creación de tablas o colecciones, donde cada fila representa una entidad y cada columna representa un atributo o campo específico.</li>
+				<li>Estructura: Las bases de datos pueden tener una estructura definida, lo que significa que siguen un esquema o un modelo de datos predefinido. Por ejemplo, las bases de datos relacionales tienen tablas con esquemas fijos, mientras que las bases de datos NoSQL pueden ser más flexibles en términos de estructura de datos.</li>
+				<li>Almacenamiento: Los datos se almacenan de manera persistente en disco o en memoria, lo que permite que la información esté disponible incluso después de que la aplicación o el sistema se cierre o reinicie.</li>
+				<li>Acceso y consulta: Las bases de datos permiten realizar consultas y búsquedas para recuperar datos específicos en función de ciertos criterios. Esto se logra a través de lenguajes de consulta, como SQL en bases de datos relacionales o consultas específicas en bases de datos NoSQL.</li>
+				<li>Seguridad y control de acceso: Las bases de datos suelen contar con mecanismos de seguridad que restringen el acceso no autorizado a los datos. Se pueden establecer permisos y roles para controlar quién puede ver o modificar los datos.</li>
+				<li>Escalabilidad: Las bases de datos pueden escalar horizontal o verticalmente para manejar grandes volúmenes de datos o aumentar el rendimiento. Esto es especialmente importante en aplicaciones que requieren crecimiento a lo largo del tiempo.</li>
+				<li>Integridad de datos: Las bases de datos suelen implementar restricciones y reglas para garantizar la integridad de los datos, lo que significa que los datos se mantienen precisos y coherentes.</li>
+			</ol>
+			<p class="parrafo">Las bases de datos se utilizan en una amplia variedad de aplicaciones y entornos, desde aplicaciones empresariales y sistemas de gestión de contenido hasta aplicaciones web y móviles. Proporcionan un medio eficiente para almacenar, administrar y recuperar información, lo que es fundamental para la mayoría de los sistemas informáticos modernos.</p>
+		</Articlep>
+		
+		
+		<Articlep>
+			<h2 class="title-h2">Base de datos NoSQL:</h2>
+			<p class="parrafo">Una base de datos NoSQL, o base de datos No Relacional, es un tipo de sistema de gestión de bases de datos que difiere del modelo de bases de datos relacionales tradicionales (SQL) en la forma en que almacena y recupera datos. Las bases de datos NoSQL se diseñaron para abordar ciertas limitaciones de las bases de datos relacionales, como la escalabilidad horizontal, la flexibilidad en la estructura de los datos y la capacidad de manejar grandes volúmenes de datos no estructurados o semiestructurados.</p>
+			<p class="parrafo">Las bases de datos NoSQL se utilizan comúnmente en aplicaciones web y móviles, big data, aplicaciones en tiempo real y otras situaciones donde las necesidades de escalabilidad y flexibilidad son primordiales. Estas bases de datos pueden utilizar diversos modelos de datos, como documentos, columnas, grafos y clave-valor, y no requieren un esquema fijo y predefinido.</p>
+			<h2 class="title-h2">MongoDB:</h2>
+			<p class="parrafo">MongoDB es una de las bases de datos NoSQL más populares y ampliamente utilizadas. Fue desarrollada por MongoDB, Inc. (anteriormente 10gen) y se lanzó por primera vez en 2009. MongoDB se basa en un modelo de datos de documentos, lo que significa que almacena datos en documentos similares a JSON, lo que hace que sea flexible y escalable.</p>
+			<p class="parrafo">Breve historia de MongoDB:</p>
+			<ul class="parrafo">
+				<li>2007: MongoDB fue concebida por Dwight Merriman, Eliot Horowitz y Kevin Ryan como respuesta a las limitaciones de las bases de datos relacionales para manejar aplicaciones web modernas y escalables.</li>
+				<li>2009: La primera versión de MongoDB fue lanzada como software de código abierto bajo la Licencia Pública de MongoDB (AGPL). Esto permitió a los desarrolladores y organizaciones utilizar MongoDB de forma gratuita y adaptarla a sus necesidades.</li>
+				<li>2010s: MongoDB ganó una amplia adopción en la comunidad de desarrollo y se convirtió en un motor de base de datos NoSQL líder. Se introdujeron características como la indexación, agregación y replicación.</li>
+				<li>2015: MongoDB, Inc. se convirtió en una empresa pública.</li>
+				<li>Hoy: MongoDB ha evolucionado y se ha convertido en una plataforma de datos completa que incluye MongoDB Atlas (un servicio de base de datos en la nube), MongoDB Enterprise (versión comercial de MongoDB), y una amplia comunidad de desarrolladores y usuarios.</li>
+			</ul>
+			<p class="parrafo">MongoDB se utiliza en una amplia variedad de aplicaciones, desde aplicaciones web y móviles hasta análisis de big data y proyectos de Internet de las cosas (IoT). Su flexibilidad y escalabilidad lo hacen atractivo para una amplia gama de casos de uso.</p>
+			<p class="parrafo"></p>
+		</Articlep>
+
+		<Articlep>
+			<h2 class="title-h2">Características y Componentes de una Base de Datos en MongoDB</h2>
+			<p class="parrafo">Una base de datos en MongoDB es una colección de datos que se almacenan de forma organizada y accesible. Aquí tienes una explicación detallada de cómo es una base de datos MongoDB:</p>
+			<ol class="parrafo">
+				<li>Nombre Único: Cada base de datos en MongoDB tiene un nombre único que la identifica. Los nombres de las bases de datos son sensibles a mayúsculas y minúsculas, y deben cumplir con ciertas restricciones de caracteres. Por ejemplo, los nombres de las bases de datos no pueden contener espacios ni caracteres especiales.</li>
+				<li>Contenedor de Colecciones: Una base de datos en MongoDB actúa como un contenedor lógico que almacena colecciones. Las colecciones son grupos de documentos relacionados. A menudo, en una aplicación, cada base de datos se utiliza para un propósito específico o una función lógica.</li>
+				<li>Documentos: En una base de datos MongoDB, los datos se almacenan en forma de documentos BSON (Binary JSON). Un documento es una unidad de datos independiente que representa una entidad o un registro. Cada documento puede contener campos y valores de diferentes tipos, y no es necesario que tengan una estructura uniforme. Los documentos pueden ser anidados, lo que permite una representación flexible de la información.</li>
+				<li>Índices: Las bases de datos en MongoDB admiten la creación de índices en las colecciones. Los índices permiten una búsqueda eficiente de datos en función de ciertos campos. Los índices pueden acelerar las consultas y mejorar el rendimiento de la base de datos.</li>
+				<li>Autenticación y Control de Acceso: MongoDB ofrece capacidades de autenticación y control de acceso a nivel de base de datos. Esto significa que puedes definir roles y permisos para usuarios y aplicaciones, lo que garantiza la seguridad de tus datos.</li>
+				<li>Características de Escalabilidad: MongoDB es conocido por su escalabilidad. Puedes distribuir los datos de una base de datos en varios servidores para satisfacer las necesidades de aplicaciones de alta carga. MongoDB ofrece opciones de escalabilidad horizontal que facilitan la expansión de la base de datos.</li>
+				<li>Replicación y Tolerancia a Fallos: MongoDB admite la replicación para proporcionar redundancia de datos y alta disponibilidad. Esto significa que puedes tener copias de tus datos en varios servidores. Si un servidor falla, otro puede tomar su lugar. Esto garantiza la tolerancia a fallos.</li>
+				<li>Recuperación de Datos: MongoDB ofrece herramientas de copia de seguridad y restauración para la recuperación de datos en caso de pérdida de información. Puedes realizar copias de seguridad de tus datos periódicamente y restaurarlos en caso de problemas.</li>
+				<li>Transacciones: MongoDB admite transacciones para aplicaciones que requieren operaciones atómicas en múltiples documentos. Puedes realizar transacciones para garantizar la integridad de los datos en situaciones críticas.</li>
+			</ol>
+		</Articlep>
+
+		
+
+		<Articlep>
+			<h2 class="title-h2">Creación BD</h2>
+			<p class="parrafo">En MongoDB, a diferencia de los sistemas de gestión de bases de datos relacionales (RDBMS), no hay un comando explícito llamado create database para crear bases de datos. En cambio, las bases de datos se crean implícitamente cuando se insertan datos en ellas o cuando se hacen referencia a ellas. Esto se debe a la naturaleza flexible de MongoDB, donde las bases de datos y las colecciones se crean dinámicamente según sea necesario.</p>
+
+			<p class="parrafo">En MongoDB, puedes crear una base de datos simplemente haciendo referencia a ella. No es necesario utilizar un comando explícito para crear una base de datos. Cuando insertes un documento en una colección dentro de una base de datos que no existe, MongoDB la creará automáticamente.</p>
+			<p class="parrafo">Supongamos que deseas crear una base de datos llamada "miBasedeDatos". Puedes hacer referencia a ella de la siguiente manera:</p>
+			<Code codigo={codigo.codigo1} typeLan={typelang}></Code>
+			<p class="parrafo">Si la base de datos "miBasedeDatos" ya existe, se utilizará. Si no existe, MongoDB la creará y la seleccionará como la base de datos actual.</p>
+			<h2 class="title-h2">Restricción Nombre Bases de Datos</h2>
+			<p class="parrafo">Los nombres de base de datos en MongoDB deben cumplir con ciertas restricciones en cuanto a caracteres y longitud. A continuación, se detallan las restricciones típicas para los nombres de base de datos en MongoDB:</p>
+
+			<ol class="parrafo">
+				<li>Longitud Máxima: El nombre de una base de datos no puede tener más de 64 caracteres. Se recomienda mantener los nombres de base de datos lo más cortos y descriptivos posible.</li>
+				<li>Caracteres Permitidos: Los nombres de base de datos en MongoDB pueden contener letras (mayúsculas y minúsculas), números y guiones bajos (_). No se permiten otros caracteres especiales, como espacios, puntos (.), comas u otros símbolos. Tampoco se permiten caracteres Unicode especiales o acentos en los nombres de base de datos.</li>
+				<li>Sensibilidad a Mayúsculas y Minúsculas: Los nombres de base de datos son sensibles a mayúsculas y minúsculas. Esto significa que, por ejemplo, "miBasedeDatos" y "miBaseDeDatos" se considerarían dos bases de datos diferentes.</li>
+				<li>Restricciones Adicionales: Algunos nombres de base de datos están reservados para el uso interno de MongoDB y no deben utilizarse para bases de datos personalizadas. Esto incluye nombres como "admin", "config" y "local".</li>
+			</ol>
+			
+			<p class="parrafo"></p>
+			<p class="parrafo"></p>
+		</Articlep>
+
+		
+		
+		<Articlep>
+			<h2 class="title-h2">Colección en MongoDB:</h2>
+			<p class="parrafo">Una colección en MongoDB es un grupo de documentos relacionados. No es necesario definir una estructura fija para los documentos en una colección. Cada documento puede tener campos y valores de diferentes tipos. A continuación, se muestra un ejemplo de cómo se ve una colección con documentos.</p>
+			<Code codigo={codigo.codigo3} typeLan={typelang}></Code>
+			<p class="parrafo">En este ejemplo, hemos creado una colección llamada "miColeccion" que contiene dos documentos. Cada documento es un objeto JSON con campos como "nombre", "edad" y "ciudad". No es necesario que todos los documentos tengan la misma estructura.</p>
+			<h2 class="title-h2">Clave-Valor en MongoDB:</h2>
+			<p class="parrafo">En MongoDB, los documentos se almacenan en formato BSON (Binary JSON), y cada campo tiene un nombre (clave) y un valor asociado. A continuación, se muestra cómo funciona la estructura clave-valor en MongoDB:</p>
+			<p class="parrafo">Clave (Key): Es el nombre del campo o atributo que almacena un valor específico en el documento. Por ejemplo, "nombre" y "edad" son claves en los ejemplos anteriores.</p>
+			<p class="parrafo">Valor (Value): Es el contenido o el dato almacenado en un campo específico. Por ejemplo, "Ejemplo 1" y 30 son valores asociados a las claves "nombre" y "edad".</p>
+			<p class="parrafo">MongoDB permite una gran flexibilidad en la estructura de documentos, lo que lo convierte en una base de datos NoSQL potente y versátil. Los campos pueden contener valores de diferentes tipos, como cadenas de texto, números, fechas y objetos anidados. Esto facilita la adaptación de MongoDB a diversas aplicaciones y casos de uso.</p>
+			<p class="parrafo">Valores (Value) en MongoDB, que pueden ser cadenas de texto (strings), objetos anidados y arrays:</p>
+			<h2 class="title-h2">Cadenas de Texto (Strings)</h2>
+			<p class="parrafo">En este ejemplo, la clave "nombre" tiene un valor de cadena de texto.</p>
+			<Code codigo={codigo.codigo4} typeLan={typelang}></Code>
+			<h2 class="title-h2">Objetos Anidados</h2>
+			<p class="parrafo">Puedes incluir objetos anidados dentro de un documento. En este caso, la clave "información" tiene un valor que es un objeto anidado con sus propias claves y valores.</p>
+			<Code codigo={codigo.codigo5} typeLan={typelang}></Code>
+			<p class="parrafo"></p>
+			<h2 class="title-h2">Arrays</h2>
+			<p class="parrafo">Los campos también pueden contener arrays de valores. Aquí, la clave "números" tiene un valor que es un array de números.</p>
+			<Code codigo={codigo.codigo6} typeLan={typelang}></Code>
+			<h2 class="title-h2">Combinación de Tipos</h2>
+			<p class="parrafo">En un documento, puedes combinar diferentes tipos de valores, como cadenas de texto, números y objetos. Aquí hay un ejemplo de un documento con una variedad de claves y valores.</p>
+			<Code codigo={codigo.codigo7} typeLan={typelang}></Code>
+			<h2 class="title-h2">Crear una Colección</h2>
+			<p class="parrafo">Ahora, puedes crear una colección dentro de la base de datos "miBasedeDatos". Supongamos que deseas crear una colección llamada "miColeccion". Puedes hacerlo mediante la inserción de un documento en esa colección. Por ejemplo:</p>
+			<Code codigo={codigo.codigo2} typeLan={typelang}></Code>
+			<p class="parrafo">En este caso, hemos insertado un documento en la colección "miColeccion". Si la colección no existía previamente, MongoDB la creará automáticamente junto con el documento.</p>
+			<p class="parrafo">Nota: La creación de la base de datos y la colección se realiza de forma implícita a medida que interactúas con ellas. No es necesario un comando explícito para crear una base de datos o colección en MongoDB. MongoDB crea estos objetos bajo demanda cuando los necesitas.</p>
+			<p class="parrafo">Una vez que hayas realizado estos pasos, habrás creado una base de datos llamada "miBasedeDatos" y una colección llamada "miColeccion" en MongoDB. Puedes seguir interactuando con la base de datos y la colección para almacenar y recuperar datos según sea necesario.</p>
+			
+		</Articlep>
+
+
+	
+
+	</main>
+
+	
+</Layout>
+
+<style>
+
+
+
+
+	
+	main {
+	/* 	margin: 0 auto;
+		padding: 1rem; */
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+		/* margin: 10px; */
+	}
+	
+
+
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+	
+	
+	
+</style>
