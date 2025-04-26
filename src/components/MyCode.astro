@@ -1,0 +1,52 @@
+---
+interface Props {
+	codigo: string;
+    typeLan: string;
+}
+const { codigo, typeLan } = Astro.props;
+---
+
+<div class="container">
+    <div class="code-css">
+        <pre class="pre-code">
+            <code  class={typeLan + ' match-braces rainbow-braces no-brace-hover'} data-previewers="color time" data-prismjs-copy="Copy" >
+             {codigo}
+            </code>
+          </pre>
+    </div>
+</div>
+
+<style>
+
+ pre{
+        overflow: auto;
+    } 
+
+    code{
+        font-size: 1.2rem;
+    }
+
+/*     .code-css{
+        display: inline-block;
+        min-width: none;
+        max-width: auto;
+        font-size: 1rem;
+    
+    } */
+
+    .container{
+        display: grid;
+        grid-template-columns:  minmax(0, fit-content)
+    }
+
+
+    .code-css{
+        
+        min-width: 100px;
+        max-width: fit-content;
+        font-size: 1rem;
+    
+    }
+
+
+</style>
